@@ -2,6 +2,9 @@ const grid = document.querySelector(".grid");
 const blockWidth = 100;
 const blockHeight = 20;
 
+const userStart = [230, 10];
+let currentPosition = userStart;
+
 //create individual block
 class Block {
   constructor(xAxis, yAxis) {
@@ -32,7 +35,6 @@ const blocks = [
   new Block(340, 210),
   new Block(450, 210),
 ];
-console.log(blocks);
 
 //draw all my blocks
 function addBlocks() {
@@ -46,6 +48,35 @@ function addBlocks() {
 }
 
 addBlocks();
+
+//add user
+const user = document.createElement("div");
+drawUser();
+user.classList.add("user");
+
+grid.appendChild(user);
+
+//draw the user
+function drawUser() {
+  user.style.left = currentPosition[0] + "px";
+  user.style.bottom = currentPosition[1] + "px";
+}
+
+//move user
+function moveUser(e) {
+  switch (e.key) {
+    case "ArrowLeft":
+      currentPosition[0] -= 10;
+      drawUser();
+      break;
+    case "ArrowRight":
+      currentPosition[0] += 10;
+      drawUser();
+      break;
+  }
+}
+
+document.addEventListener("keydown", moveUser);
 
 /*  over all construction of mechanics
     1. grab grid
