@@ -96,6 +96,14 @@ ball.classList.add("ball");
 drawBall();
 grid.appendChild(ball);
 
+//move the ball
+function moveBall() {
+  ballCurrentPosition[0] += 2;
+  ballCurrentPosition[1] += 2;
+  drawBall();
+}
+
+setInterval(moveBall, 30);
 /*  over all construction of mechanics
     1. grab grid
     2. make function to store block creation in
