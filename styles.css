@@ -27,3 +27,13 @@
   background-color: #ff7b00f5;
   position: absolute;
 }
+
+#start-pause-button,
+#replay-button {
+  padding: 5px;
+  margin: 4px;
+  border-radius: 20px;
+  background-color: pink;
+  color: darkslategrey;
+  font-weight: heavy;
+}

@@ -17,6 +17,9 @@ let ballCurrentPosition = ballStart;
 
 let timerId;
 
+const replayButton = document.querySelector("#replay-button");
+const startPauseButton = document.querySelector("#start-pause-button");
+
 //create individual block
 class Block {
   constructor(xAxis, yAxis) {
@@ -188,6 +191,24 @@ function checkForCollisions() {
     }
   }
 }
+
+startPauseButton.addEventListener("click", () => {
+  if (timerId) {
+    clearInterval(timerId);
+    timerId = null;
+    document.removeEventListener("keydown", moveUser);
+    document.removeEventListener("keydown", moveBall);
+  } else {
+    timerId = setInterval(moveBall, 30);
+    document.addEventListener("keydown", moveUser);
+    document.addEventListener("keydown", moveBall);
+  }
+});
+
+document.querySelector("#replay-button").addEventListener("click", () => {
+  window.location.reload();
+  return false;
+});
 
 /*  over all construction of mechanics
     1. grab grid
